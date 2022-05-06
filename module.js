@@ -16,17 +16,8 @@ function executeCommand(serviceName, cmd) {
 }
 
 function isCurrentSessionRemoteable(serviceName, cmd) {
-  const res = serviceAddon.is_current_session_remoteable();
-
-  if (res === -1) {
-    throw "could not open service manager";
-  } else if (res === -2) {
-    throw `could not connect to service ${serviceName}`;
-  } else if (res === -3) {
-    throw `sending command ${cmd} to service ${serviceName} failed`;
-  } else if (res > 0) {
-    throw `sending command ${cmd} to service ${serviceName} failed with error code ${res}`;
-  }
+  const res = remoteAddon.is_current_session_remoteable();
+  return res === 1 ? true : false;
 }
 
 module.exports.executeCommand = executeCommand;

@@ -13,3 +13,10 @@ describe("ExecuteCommand", function () {
     assert.throws(() => lib.executeCommand("DummyService", 200));
   });
 });
+
+describe("IsCurrentSessionRemoteable", function () {
+  it("should not be remoteable", function () {
+    const isRemoteable = lib.isCurrentSessionRemoteable();
+    assert.equal(isRemoteable, false);
+  });
+});
